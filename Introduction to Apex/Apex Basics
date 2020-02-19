@@ -1,0 +1,177 @@
+public class ApexIntro {
+    
+    // A variable.
+    // Commonly we use camelCase for variable names, 
+    // AKA lower camel case, where the first letter of every word
+    // after the first is capitalized.
+    // We should also be using descritive names.
+    private String greetingVar = 'Hello';
+    
+    // Let us talk about constructors. 
+    // These are not quite the same as the JavaScript Constructor, 
+    // or instance object we discussed.
+    // 
+    // Constructors serve to help us construct instances of classes.
+    // By default all classes have a no argument constructor.
+    // However, once we declare one of our own we lose that default constructor.
+    // 
+    // Constructors must be public, have no return type, and share their name with the class they belong to.
+    public ApexIntro() {
+        // Unlike in javascript, we won't be using console.log.
+        // Instead we use system.debug.
+        // 
+        // Further, double quotation marks "" are not used, we use single quotation marks '' instead.
+        system.debug('Hello World!');
+    }
+
+	// For method names we typically use Pascal Case, AKA Upper Camel Case, where we capitalize the first word as well.    
+    public void MyMethodOne(){
+        // We take the previously declared variable, and use it along with a string to declare Hello World.
+        System.debug(greetingVar + ' World!');
+    }
+    
+    // Here we make use of parameters in the signature, allowing us to take an argument.
+    public void  SayHello(String name){
+        // Here we accept a single argument and pass that into our output.
+        System.debug(greetingVar + ' ' + name);
+    }
+    
+    
+    // Lets make use of those collections.
+    public void CollectionTimeFun() {
+        // Collections
+        // List - We declare this is a list of strings called helloList, 
+        // and we assign it a value to start.
+        List<String> helloList = new List<String>{'Konnichiwa'};
+        // Set - We declare this is a set of strings called helloSet,
+        // and we assign it a value to start.
+        Set<String> helloSet = new Set<String>{'Japan'};
+        // Map - We declare this is a map of string key value pairs.,
+        // and assign it a key value pair to start.
+        Map<String, String> helloMap = new Map<String, String>{'Japan' => 'Konnichiwa'};
+    
+        // Of course collections with but a single value in it do not make a ton of sense.
+        // Let us remedy that.
+        // 
+        // We add two new values to our helloList using the add method.
+        helloList.add('Bonjour');
+        helloList.add('Hola');
+            
+        // We add two new values to the helloSet using the add method.
+        helloSet.add('France');
+        helloSet.add('Spain');
+            
+        // We add two new key-value pairs to the helloMap using the put method.
+        helloMap.put('France', 'Bonjour');
+        helloMap.put('Spain', 'Hola');
+        
+        // Now lets take a look at what we have.
+        system.debug(helloList);
+        system.debug(helloSet);
+        system.debug(helloMap);
+        InternationalHello('Japan', helloSet, helloMap);
+        
+    }
+    
+    //While Loop
+    //The while loop continues so long as the parameter is true.
+    //So long as i is less than 5, keep doing it. 
+    public void countWhileLoop(){
+        integer i = 0;
+        while(i < 5){
+            system.debug('The loop goes: ' + i);
+            i++;
+        }
+    }
+        
+    //Do While Loop
+    //The do while loop is identical to the while loop except 
+    //it will always execute at least once.
+    public void countDoWhileLoop(integer inty){
+        integer i = inty;
+        do{
+            system.debug('The loop goes: ' + i);
+            i++;
+        }while(i < 5);
+    }
+    
+    //Switch
+    //The switch checks if the expression, 
+    //the hello variable below, 
+    //matches one of several branches and executes 
+    //the corresponding code.
+    public void switchMethod(){
+        String helloNationality = 'unknown';
+        switch on greetingVar{
+            when 'Hello'{
+                helloNationality = 'USA';
+                system.debug('Greeting: ' + greetingVar);
+                system.debug('Nation: ' + helloNationality);
+                greetingVar = 'Konnichiwa';
+            }
+            when 'Konnichiwa'{
+                helloNationality = 'Japan';
+                system.debug('Greeting: ' + greetingVar);
+                system.debug('Nation: ' + helloNationality);
+                greetingVar = 'Hola';
+            }
+            when 'Hola'{
+                helloNationality = 'Spain';
+                system.debug('Greeting: ' + greetingVar);
+                system.debug('Nation: ' + helloNationality);
+                greetingVar = 'Bonjour';
+            }
+            when 'Bonjour'{
+                helloNationality = 'France';
+                system.debug('Greeting: ' + greetingVar);
+                system.debug('Nation: ' + helloNationality);
+                greetingVar = 'Hello';
+            } when else {
+                system.debug('Unknown Greeting');
+                greetingVar = 'Hello';
+            }
+        }
+    }
+    
+    //For loop
+    //for as long as i is less than the size of the list
+    //we keep going, incrementing by 1 every time.
+    //Once i is greater tan or equal to the size of the list, 
+    //the loop ends
+    public void checkList(string hello, List<String> helloList){
+        for(integer i = 0; i < helloList.size(); i++){
+            if(helloList[i] == hello){
+                system.debug('We found a match!');
+            }else{
+                system.debug('No match this time boss!');
+            }
+        }
+    }
+    
+    //For-each loop
+    //Similar to above, but this loop is a little smarter
+    //when dealing with collections. For each entry in a list 
+    //or set, it executes the code. 
+    public void checkList2(string hello, List<String> helloList){
+        for(string s : helloList){
+            if(s == hello){
+                system.debug('We found a match!');
+            }else{
+                system.debug('No match this time boss!');
+            }
+        }
+    }
+    
+    //This method takes an argument of a country, if that country exists
+    //in the set, set the hello variable equal to the key-value pair value
+    //where the key is the country. Then say hello. 
+    public void InternationalHello(String country, Set<String> helloSet, Map<String, String> helloMap){
+        if(helloSet.contains(country)){
+            greetingVar = helloMap.get(country);
+            SayHello(country);
+        }else{
+            system.debug('Supplied country not in map.');
+        }
+    }
+
+}
