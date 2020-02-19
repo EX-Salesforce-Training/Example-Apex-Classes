@@ -7,9 +7,7 @@ public class ApexIntro {
     // We should also be using descritive names.
     private String greetingVar = 'Hello';
     
-    // Let us talk about constructors. 
-    // These are not quite the same as the JavaScript Constructor, 
-    // or instance object we discussed.
+    // Let us talk about constructors.
     // 
     // Constructors serve to help us construct instances of classes.
     // By default all classes have a no argument constructor.
