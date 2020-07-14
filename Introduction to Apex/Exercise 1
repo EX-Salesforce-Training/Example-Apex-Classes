@@ -1,0 +1,31 @@
+public class Exercise_1 {
+	// We first declare a method for our behavior.
+    public void debugList() {
+        // Because we want to use best practices, we 
+        // want to contain our updates in a collection.
+        // So we have initialized contactUpdates.
+        List<Contact> contactUpdates = new List<Contact>();
+        // Rather than query and place the returned values 
+        // in a second list, we take advantage of our SOQL
+        // for-loop.
+        for(Contact c:[SELECT FirstName, LastName, phone, account.phone FROM Contact FORUPDATE]) {
+            // We evaluate if the contact requires an update.
+            // We see if the contact lacks a phone number
+            // and if the associated account has one.
+            if(c.phone == null && c.account.phone != null) {
+                // If so, we update the contact with the
+                // accounts phone number.
+                c.phone = c.account.phone;
+                // Having made our update, we add this
+                // contact to our update collection.
+                contactUpdates.add(c);
+            }            
+        }
+        // Once our loop has completed we have a complete
+        // list of contacts to update and so we do so.
+        // We use the Database class update method.
+        // This allows us to allow for partial success
+        // by making the AllOrNone parameter false.
+        database.update(contactUpdates, false);
+    }
+}
