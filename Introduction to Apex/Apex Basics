@@ -1,175 +1,276 @@
-public class ApexIntro {
-    
-    // A variable.
-    // Commonly we use camelCase for variable names, 
-    // AKA lower camel case, where the first letter of every word
-    // after the first is capitalized.
-    // We should also be using descritive names.
-    private String greetingVar = 'Hello';
-    
-    // Let us talk about constructors.
-    // 
-    // Constructors serve to help us construct instances of classes.
-    // By default all classes have a no argument constructor.
-    // However, once we declare one of our own we lose that default constructor.
-    // 
-    // Constructors must be public, have no return type, and share their name with the class they belong to.
-    public ApexIntro() {
-        // Unlike in javascript, we won't be using console.log.
-        // Instead we use system.debug.
-        // 
-        // Further, double quotation marks "" are not used, we use single quotation marks '' instead.
-        system.debug('Hello World!');
-    }
+// Apex
+    /* 
+    // Apex is a Hosted, Object Oriented, Strongly Typed programming language that uses Java-like syntax. 
+    // It is a proprietary language used by salesforce that is engineered to work quickly and efficiently
+    // in the cloud with large amounts of data.
+    */ 
 
-	// For method names we typically use Pascal Case, AKA Upper Camel Case, where we capitalize the first word as well.    
-    public void MyMethodOne(){
-        // We take the previously declared variable, and use it along with a string to declare Hello World.
-        System.debug(greetingVar + ' World!');
+public class IntroApex {
+    
+    // Comments
+    /*
+    // Comments are non-compiled human readable text used to help 
+    // document and explain your code. This is valuable to ease
+    // the difficulty in maintaining and understanding code.
+    // 
+    // Come back to code you didn't comment a year after the fact.
+    // You'll regret not having commented it properly.
+    */
+    // Header Comment
+    /*
+    ///////////////////////////////////////////////////////////////
+    //
+    // Name: Intro Apex
+    // Author: Harvey Hill
+    // Created: 14/07/2020
+    // Last Modified: 14/07/2020
+    // Description: A class that provides a general overview and 
+    // introduction to the Apex programming language.
+    //
+    ///////////////////////////////////////////////////////////////
+	*/
+
+    // Naming Conventions
+    /* A note on naming conventions: CamelCase
+    // 
+    // Common naming convention in coding involves the use of CamelCase, 
+    // wherein the words are pushed together and the first letter of 
+    // each is capitalized.
+    // 
+    // This is also called Pascal Case, or Upper Camel Case. This is
+    // commonly used for class and method names.
+    //
+    // Lower Camel Case is similar, but the first letter is NOT
+    // capitalized. This is commonly used for variable names. 
+    */
+    
+    // Variables
+    /*
+    // Variables are used to store values to be referenced and 
+    // used and manipulated elsewhere. These are the states of
+    // a class.
+    // You can think of them like a container, where we can store 
+    // items within them and later remove that item, and place 
+    // another in there.
+    // 
+    // Notice we are using Lower Camel Case for our variable names.
+    // Additionally variable names should be descriptive, this
+    // is a form of self documenting code, where by just reading
+    // the code we should have a general idea of what the variable
+    // is used for.
+    */ 
+    string hello = 'Hello';
+    // Primitive Data Types
+    blob blobDataType;
+    boolean booleanDataType;
+    date dateDataType;
+    datetime datetimeDataType;
+    decimal decimalDataType;
+    double doubleDataType;
+    id idDataType;
+    integer integerDataType;
+    long longDataType;
+    object objectDataType;
+    string stringDataType;
+    time timeDataType;
+    // sObjects
+    account accountDataType = new Account();
+    sObject sobjectDataType;
+    // Collections
+    list<Account> listDataType = new List<Account>();
+    set<sObject> setDataType = new Set<sObject>();
+    map<String, Boolean> mapDataType = new Map<String, Boolean>();
+    
+    public enum Season {WINTER, SPRING, SUMMER, FALL}
+    Season currentSeason = Season.WINTER;
+    
+    
+    // Initialization Blocks
+    /*
+    // Initialization blocks are blocks of code that execute prior to the constructor.
+    // These only ever run once per instance, and should generally be reserved for 
+    // complex situations. 
+    // 
+    // Static initialization blocks only ever execute once when the class is first 
+    // accessed.
+    */
+    {
+        // Code
+        // System.debug('Hiya Y\'all');
     }
     
-    // Here we make use of parameters in the signature, allowing us to take an argument.
-    public void  SayHello(String name){
-        // Here we accept a single argument and pass that into our output.
-        System.debug(greetingVar + ' ' + name);
+    // Constructors
+    /* 
+    // Constructors are blocks of code invoked when an instance of a class is initialized.
+    // This instance is called an object (not to be confused with sObjects) and is built
+    // from the class blueprint.
+    // 
+    // By default every class has a no argument constructor, but this default constructor
+    // is removed once we declare a constructor of our own. When we want to intialize a 
+    // class we use the 'new' keyword to call the constructor.
+    */
+    public IntroApex() {
+        // Output information to the debug log.
+        system.debug(hello +' World');
+        system.debug(currentSeason);
+    }
+    public IntroApex(string target) {
+        // Output information to the debug log.
+        hello = target;
+        system.debug(hello);
+    }
+	public IntroApex(string target, integer n) {
+        // Output information to the debug log.
+        system.debug(hello +' ' + target + n);
+        ListDataType = [SELECT name, id, phone FROM Account];
     }
     
-    
-    // Lets make use of those collections.
-    public void CollectionTimeFun() {
-        // Collections
-        // List - We declare this is a list of strings called helloList, 
-        // and we assign it a value to start.
-        List<String> helloList = new List<String>{'Konnichiwa'};
-        // Set - We declare this is a set of strings called helloSet,
-        // and we assign it a value to start.
-        Set<String> helloSet = new Set<String>{'Japan'};
-        // Map - We declare this is a map of string key value pairs.,
-        // and assign it a key value pair to start.
-        Map<String, String> helloMap = new Map<String, String>{'Japan' => 'Konnichiwa'};
-    
-        // Of course collections with but a single value in it do not make a ton of sense.
-        // Let us remedy that.
-        // 
-        // We add two new values to our helloList using the add method.
-        helloList.add('Bonjour');
-        helloList.add('Hola');
-            
-        // We add two new values to the helloSet using the add method.
-        helloSet.add('France');
-        helloSet.add('Spain');
-            
-        // We add two new key-value pairs to the helloMap using the put method.
-        helloMap.put('France', 'Bonjour');
-        helloMap.put('Spain', 'Hola');
-        
-        // Now lets take a look at what we have.
-        system.debug(helloList);
-        system.debug(helloSet);
-        system.debug(helloMap);
-        InternationalHello('Japan', helloSet, helloMap);
-        
+    //Methods 
+    /*
+    // Methods are blocks of code that represent behaviors of a class.
+    // These contain logic that are used to result in a specific outcome
+    // based on your use case.
+    */
+    // If Statements
+    public void IfStatements() {
+        System.debug(hello);
+	// This if checks to see if the expression is true.
+	// If it is true, it executes the code contained within.
+        if(hello == 'Hello') {
+            system.debug(hello + ' is Hello');
+	// Else if that is false, it evaluates another expression.
+        } else if(hello == 'Bonjour') {
+        	system.debug('It is Bonjour');    
+	// Finally it otherwise executes the following code if both
+	// of the above expressions are false.
+        } else {
+            system.debug('It is not Hello');
+        }
     }
-    
-    //While Loop
-    //The while loop continues so long as the parameter is true.
-    //So long as i is less than 5, keep doing it. 
-    public void countWhileLoop(){
+	// While Loop
+	// The while loop continues so long as the parameter is true.
+        // So long as i is less than 5, keep doing it. 
+    public void WhileLoop() {
         integer i = 0;
-        while(i < 5){
-            system.debug('The loop goes: ' + i);
+        while(i < 5) {
+            system.debug(i);
             i++;
         }
     }
+    // Do-While loop
+    // The do while loop is identical to the while loop except 
+    // it will always execute at least once.
+    public void DoWhileLoop() {
+        integer i = 0;
+        do {
+        	system.debug(i);
+            i++;    
+        } while(i == 0);
+    }
+    
+    // Collections
+    public void CollectionsAndLoops() {
+        // List
+	// A list is a type of collection which is ordered, and whose values are not unique.
+        List<String> greetingList = new List<String>{'Konnichiwa'};
+        // Set
+	// A set is a type of collection that is unordered, and whose values are unique.
+        Set<String> greetingSet = new Set<String>{'Japan'};
+        // Maps
+	// A map is a collection comprised of key-value pairs. Key values must be unique, 
+	// but the values do not have to be.
+        Map<String, String> greetingMap = new Map<String, String>{'Japan' => 'Konnichiwa'};
+        // Adding to a list
+        greetingList.add('Bonjour');
+        greetingList.add('Hola');
+        //Adding to a set
+        greetingSet.add('France');
+        greetingSet.add('Spain');
+        // Adding to a Map
+        greetingMap.put('France', 'Bonjour');
+        greetingMap.put('Spain', 'Hola');
         
-    //Do While Loop
-    //The do while loop is identical to the while loop except 
-    //it will always execute at least once.
-    public void countDoWhileLoop(integer inty){
-        integer i = inty;
-        do{
-            system.debug('The loop goes: ' + i);
-            i++;
-        }while(i < 5);
+        system.debug(greetingList);
+        system.debug(greetingSet);
+        system.debug(greetingMap);
     }
-    
-    //Switch
-    //The switch checks if the expression, 
-    //the hello variable below, 
-    //matches one of several branches and executes 
-    //the corresponding code.
-    public void switchMethod(){
-        String helloNationality = 'unknown';
-        switch on greetingVar{
-            when 'Hello'{
-                helloNationality = 'USA';
-                system.debug('Greeting: ' + greetingVar);
-                system.debug('Nation: ' + helloNationality);
-                greetingVar = 'Konnichiwa';
+    // Traditional For loop
+    //
+    // This is a traditional for loop which executes
+    // a number of times based on the conditions we set
+    // within it. In this case as long as the value of i
+    // is less than the size of the list.
+    public void ForLoop() {
+        List<Integer> bob = new List<Integer>{1,2,3,78};
+        for(integer i = 0; i < bob.size(); i++) {
+            system.debug(bob[i]);
+        }
+    }
+    // List/Set For Loop
+    //
+    // This List/Set for loop executes for every value found
+    // in the list placed in it.
+    public void EnhancedForLoop() {
+        List<Integer> bob = new List<Integer>{1,2,3,78};
+            for(Integer i:bob) {
+                system.debug(i);
             }
-            when 'Konnichiwa'{
-                helloNationality = 'Japan';
-                system.debug('Greeting: ' + greetingVar);
-                system.debug('Nation: ' + helloNationality);
-                greetingVar = 'Hola';
-            }
-            when 'Hola'{
-                helloNationality = 'Spain';
-                system.debug('Greeting: ' + greetingVar);
-                system.debug('Nation: ' + helloNationality);
-                greetingVar = 'Bonjour';
-            }
-            when 'Bonjour'{
-                helloNationality = 'France';
-                system.debug('Greeting: ' + greetingVar);
-                system.debug('Nation: ' + helloNationality);
-                greetingVar = 'Hello';
-            } when else {
-                system.debug('Unknown Greeting');
-                greetingVar = 'Hello';
+    }
+    // SOQL For Loop
+    //
+    // This SOQL for loop works with a soql query directly,
+    // for every contact returned we execute the contained 
+    // code.
+    public void SOQLForLoop() {
+        for(Contact c:[SELECT lastname, firstname FROM Contact]) {
+            system.debug(c.FirstName + ' ' + c.LastName);
+        }
+    }
+    // Switch
+    // In this method we make use of a switch statement.
+    // We declare it using Switch on Variable-to-check,
+    // then we evaluate it, and when it is equal to an
+    // expected value execute the code within that block.
+    //
+    // The when else option acts as a default.
+    public void SwitchStatement() {
+        String switchString = 'Hello';
+        for(integer i = 0;i < 5;i++){
+            switch on switchString{
+                when 'Hello'{
+                    system.debug(switchString);
+                    switchString = 'Konnichiwa'; 
+                }
+                when 'Konnichiwa'{
+                    system.debug(switchString);
+                    switchString = 'Bonjour';
+                }
+                when 'Bonjour'{
+                    system.debug(switchString);
+                    switchString = 'Hola';
+                }
+                when 'Hola'{
+                    system.debug(switchString);
+                    switchString = 'Hello';
+                }
+                when else{
+                    system.debug(switchString);
+                    switchString = 'Hello';
+                }
             }
         }
     }
     
-    //For loop
-    //for as long as i is less than the size of the list
-    //we keep going, incrementing by 1 every time.
-    //Once i is greater tan or equal to the size of the list, 
-    //the loop ends
-    public void checkList(string hello, List<String> helloList){
-        for(integer i = 0; i < helloList.size(); i++){
-            if(helloList[i] == hello){
-                system.debug('We found a match!');
-            }else{
-                system.debug('No match this time boss!');
-            }
-        }
-    }
-    
-    //For-each loop
-    //Similar to above, but this loop is a little smarter
-    //when dealing with collections. For each entry in a list 
-    //or set, it executes the code. 
-    public void checkList2(string hello, List<String> helloList){
-        for(string s : helloList){
-            if(s == hello){
-                system.debug('We found a match!');
-            }else{
-                system.debug('No match this time boss!');
-            }
-        }
-    }
-    
-    //This method takes an argument of a country, if that country exists
-    //in the set, set the hello variable equal to the key-value pair value
-    //where the key is the country. Then say hello. 
-    public void InternationalHello(String country, Set<String> helloSet, Map<String, String> helloMap){
-        if(helloSet.contains(country)){
-            greetingVar = helloMap.get(country);
-            SayHello(country);
-        }else{
-            system.debug('Supplied country not in map.');
-        }
-    }
-
+    // Operator Precedence
+	/*
+	* 1 {} () ++ --
+	* 2 | -x +x (type) new
+	* 3 * /
+	* 4 + -
+	* 5 < <= > => 
+	* 6 == !=
+	* 7 &&
+	* 8 ||
+	* 9 = += -+ /= &= 
+    */
 }
