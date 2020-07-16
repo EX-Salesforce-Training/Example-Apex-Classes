@@ -9,7 +9,7 @@
 // keyword
 // Virtual classes can be extended or inherited from,
 // as well as being able to be instantiated.
-global abstract class OOPPillars {
+global virtual class OOPPillars {
 
     // Access Modifiers
     // 
