@@ -19,6 +19,15 @@
 // method is visible for test classes.
 // 
 */
+/*
+// Testing Best Practices
+//
+// Test Single - test if it works in a single instance.
+// Test Bulk - Test if it works over mutiple iterations.
+// Test positive - Does it behave as expected when given expected parameters.
+// Test Negative - Does it behave as expected when given unexpected parameters.
+// Test Restricted User - Can a user gain access to data they are not supposed to be able to access.
+*/
 @isTest
 public class ContactTriggerTest {
 	/*
