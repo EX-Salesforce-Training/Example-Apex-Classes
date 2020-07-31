@@ -1,0 +1,32 @@
+<apex:page controller="CreateContactController">
+    <apex:form >
+    	<!--<apex:pageBlock>
+            <apex:outputText value="{!updatetext}" /><br />
+            <apex:outputLabel value="First Name: "/>
+            <apex:inputText value="{!fname}"/><br />
+            <apex:outputLabel value="Last Name: "/>
+            <apex:inputText value="{!lname}"/><br />
+            <apex:outputLabel value="Phone: "/>
+            <apex:inputText value="{!phone}"/><br />
+            <apex:outputLabel value="Email: "/>
+            <apex:inputText value="{!email}"/><br />
+        	<apex:pageBlockButtons>
+        		<apex:commandButton value="Save Contact" action="{!save}" />
+            </apex:pageBlockButtons>
+        </apex:pageBlock> -->
+        <apex:pageBlock ><!-- -->
+            <apex:outputText value="{!updatetext}" /><br />
+            <apex:outputLabel value="First Name: "/>
+            <apex:inputField value="{!bob.firstname}"/><br />
+            <apex:outputLabel value="Last Name: "/>
+            <apex:inputField value="{!bob.lastname}"/><br />
+            <apex:outputLabel value="Phone: "/>
+            <apex:inputField value="{!bob.phone}"/><br />
+            <apex:outputLabel value="Email: "/>
+            <apex:inputField value="{!bob.email}"/><br />
+        	<apex:pageBlockButtons >
+        		<apex:commandButton value="Save Contact" action="{!save}" />
+            </apex:pageBlockButtons>
+        </apex:pageBlock> 
+    </apex:form>
+</apex:page>
