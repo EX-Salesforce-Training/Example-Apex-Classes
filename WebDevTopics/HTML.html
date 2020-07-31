@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>StarMatch</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
+            crossorigin="anonymous">
+
+        <link rel="stylesheet" href="..\CSS\css.css">
+        <style>
+            h1{
+                color: brown;
+            }
+        </style>
+        <script src="..\JS\starmatch.js"></script>
+    </head>
+    <body>
+        <!--<h1 style="color:cornflowerblue">Welcome</h1>
+        <p class="bob">Hello World</p>
+        <a href="http://www.google.com">Google</a></br>
+        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/6/62/Kermit_the_Frog.jpg/220px-Kermit_the_Frog.jpg" alt="A puppet frog named Kermit.">
+        <ul>
+            <li>Kermit</li>
+            <li class="bob">Fozzy Bear</li>
+            <li>Oscar The Grouch</li>
+            <li id="george">Gonzo</li>
+        </ul>
+        <table>
+            <tr><th>Name</th><th>Animal</th></tr>
+            <tr><td>Kermit</td><td>Frog</td></tr>
+            <tr><td>Fozzy</td><td>Bear</td></tr>
+        </table>
+        <button type="button" onclick="StarMatch()">Change Content</button>
+        <br>
+        <br>-->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg">
+                    <!-- input box for fibonacci number -->
+                    <label style="color: aliceblue" for="FibonacciSubmit">Number to Fibbonize</label>
+                    <input type="number" id="FibonacciSubmit" class="form-control col-3" placeholder="Enter Number">
+                    <br>
+                    <!-- button to calculate fibonacci number. we can either add the event listener here in our 
+                        HTML page with the onclick attribute or in the JS file with the addEventListener method -->
+                    <button class="btn btn-danger" id="getFibonacciResult">Submit</button>
+                </div>
+                <!-- output to hold result of fibonacci calculation -->
+                <div class="col-lg">
+                    <label style="color: aliceblue " for="FibonacciResult">Result</label>
+                    <input type="text" id="FibonacciResult" class="form-control col-3" placeholder="Waiting" readonly="true">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg">
+                    <h1 id="starwars">Star Wars Character</h1>
+                    <button class="btn btn-danger" id="StarButton">Submit</button>
+                </div>
+            </div>
+        </div>
+        
+    </body>
+    <script>
+    </script>
+</html>
