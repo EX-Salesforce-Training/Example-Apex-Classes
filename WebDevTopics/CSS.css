@@ -1,0 +1,20 @@
+body {
+    background-color: black;
+    color: cornsilk;
+}
+
+li {
+    color: bisque;
+}
+
+.bob {
+    color: darkolivegreen;
+    padding: 5em;
+    border-style: groove;
+    border-color: rgb(97, 141, 103);
+    margin: 5em;
+}
+
+#george {
+    color: crimson;
+}
