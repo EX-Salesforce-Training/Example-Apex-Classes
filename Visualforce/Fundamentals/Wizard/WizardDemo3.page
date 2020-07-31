@@ -1,0 +1,14 @@
+<apex:page controller="WizardDemoController">
+    <apex:form >
+    	<apex:pageBlock >
+        	<apex:pageBlockButtons >
+                <apex:commandButton action="{!page3_next}" value="Next" />
+                <apex:commandButton action="{!page3_previous}" value="Previous" />
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection >
+                <apex:outputtext value="phone"/>
+                <apex:inputtext value="{!phone}" />                        
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>
