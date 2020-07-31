@@ -1,0 +1,18 @@
+<apex:page controller="VFWizardDemoController">
+    <apex:form >
+    	<apex:pageBlock >
+        	<apex:pageBlockButtons >
+                <apex:commandButton action="{!saveContact}" value="Save" />
+                <apex:commandButton action="{!page4_previous}" value="Previous" />
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection >
+                <apex:outputtext value="Name"/>
+                <apex:inputtext value="{!name}" /> 
+                <apex:outputtext value="Email"/>
+                <apex:inputtext value="{!email}" />
+                <apex:outputtext value="Phone"/>
+                <apex:inputtext value="{!phone}" /> 
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>
