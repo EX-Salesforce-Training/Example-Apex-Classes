@@ -1,0 +1,22 @@
+<apex:page controller="ContactListController">
+    <apex:form >
+    	<apex:pageBlock >
+            <apex:inputText value="{!bob}" />
+        	<apex:pageBlockTable value="{!contactList}" var="con">
+                <apex:column >
+                	<apex:outputField value="{!con.firstname}" />
+                </apex:column>
+                <apex:column >
+                    <apex:outputField value="{!con.account.name}" />
+                </apex:column>
+                <apex:column value="{!con.lastname}" />
+                <apex:inlineEditSupport event="ondblClick" showOnEdit="saveButton,cancelButton" />
+            </apex:pageBlockTable>
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Bob?" action="{!WhatAboutBob}" id="bobButton" />
+                <apex:commandButton value="Save" action="{!save}" id="saveButton" />
+               <!-- <apex:commandButton value="Cancel" action="{!cancel}" id="cancelButton" />-->
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>
