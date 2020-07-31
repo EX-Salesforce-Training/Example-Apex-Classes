@@ -1,0 +1,13 @@
+<apex:page controller="WizardDemoController">
+    <apex:form >
+    	<apex:pageBlock >
+        	<apex:pageBlockButtons >
+                <apex:commandButton action="{!page1_next}" value="Next" />
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection >
+                <apex:outputtext value="name"/>
+                <apex:inputtext value="{!name}" />                        
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>
