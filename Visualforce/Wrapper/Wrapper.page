@@ -1,0 +1,19 @@
+<apex:page controller="VFWrapperController">
+    <apex:slds />
+    <apex:form >
+        <div class="sldx-scope" >
+            <apex:pageBlock >
+                <apex:pageBlockButtons >
+                    <apex:commandButton action="{!changeBillingStateToVA}" value="Update State"/>
+                </apex:pageBlockButtons>
+                <apex:pageBlockTable value="{!wrapperList}" var="wrapper">
+                    <apex:column headerValue="Select">
+                        <apex:inputCheckbox value="{!wrapper.selected}"/>
+                    </apex:column>
+                    <apex:column value="{!wrapper.thisAccount.name}"/>
+                    <apex:column value="{!wrapper.thisAccount.billingstate}"/>
+                </apex:pageBlockTable>
+        	</apex:pageBlock>
+    	</div>
+    </apex:form>
+</apex:page>
