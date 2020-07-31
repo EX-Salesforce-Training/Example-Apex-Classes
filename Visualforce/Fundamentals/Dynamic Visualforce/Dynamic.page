@@ -1,3 +1,0 @@
-<apex:page standardController="Account" extensions="DynamicVisualForceExampleComponent">
-	<apex:dynamicComponent componentValue="{!OutputText}" />
-</apex:page>
