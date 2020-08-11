@@ -1,0 +1,86 @@
+<!-- we declare our Apex controller the same way we declare a custom controller in Visualforce - through setting
+the controller attribute to the name of the Apex class -->
+<aura:component controller="CompleteControlController">
+    <!-- <aura:attribute> to hold the array of Ids that our Apex method returns, we'll populate it upon return
+    of the server call -->
+    <aura:attribute name="cases" type="Id[]" />
+    <aura:attribute name="clicked" type="boolean" default="false" />
+    <aura:attribute name="newContact" type="Contact"
+                    default="{ 
+                             'sobjectType':'Contact',
+                             'FirstName': '',
+                             'LastName': ''
+                             }"/>
+    <!-- an event handler that will call the doInit function in our JS controller when the component has finished
+    loading -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    
+    <fieldset class="slds-box slds-theme--default slds-container--small" >
+        <form class="slds-form--stacked">
+            <lightning:input aura:id="contactform" 
+                             label="First Name"
+                             name="firstName"
+                             value="{!v.newContact.FirstName}"
+                             />
+            <lightning:input aura:id="contactform"
+                             label="Last Name"
+                             name="lastName"
+                             value="{!v.newContact.LastName}"
+                             required="true"
+                             />
+            <lightning:button label="Create Contact" onclick="{!c.createContact}"/>
+        </form>
+    </fieldset>
+
+    
+    
+    <lightning:button label="Click Me!" title="Neutral action" onclick="{! c.handleClick }"/>
+    <aura:if isTrue="{!v.clicked}" >
+    <!-- slds-box, another nice styling class from SLDS -->
+    <div class="slds-box">
+        <!-- SLDS also contains text heading classes -->
+    	<div class="slds-text-heading_large">My Open Cases</div>
+        <br/>
+
+        <!-- the <lightning:accordion> component is a member of the Lightning Component Library that creates an
+        accordion (no way!)
+        here, we give it an aura:id so we can refer to it later in our JS with the component.find() method
+        if we wish -->
+        <lightning:accordion aura:id="accordion" >
+
+            <!-- the <aura:iteration> component is a member of the Lightning Component Library that acts kind of
+            like a markup version of a for-of loop
+        
+            the required items attribute is the list of elements that we are iterating through
+        
+            the required var attribute is the iteration variable
+        
+            e.g., this is analogous to a JS for-of loop that looks like for(let case of cases) where cases is the
+            value of items and case is the value of var -->
+            <aura:iteration items="{!v.cases}" var="case">
+
+                <!-- <lightning:accordionSection is another member of the Lightning Component Library, it goes
+                within our <lightning:accordion> and is an expandable/collapsible section of said accordion
+                    
+                because we're within an <aura:iteration>, we use expression syntax to refer to the iteration
+                variable; the iteration variable isn't an <aura:attribute>, so there's no value provider here -->
+                <lightning:accordionSection label="{!case}">
+
+                    <!-- instantiate a child component with a view of the record inside of the accordion section
+                    by specifying the caseId attribute, we're setting the value of the <aura:attribute> in the 
+                    child component that's named case
+                
+                    so all together, our <lightning:accordion> - <aura:iteration> - <lightning:accordionSection>
+                    combination makes an accordion that has a section for each open case; we can expand
+                    those sections to get more details about each case
+                
+                    and we did all this with a whole lot less markup/JS than we would have needed if we wrote in
+                    HTML/CSS or even if we used the component blueprint from SLDS! -->
+                    <c:LACFApexControllerItem caseId="{!case}" />
+                </lightning:accordionSection>
+            </aura:iteration>
+        </lightning:accordion>
+    </div>
+    </aura:if>
+</aura:component>
