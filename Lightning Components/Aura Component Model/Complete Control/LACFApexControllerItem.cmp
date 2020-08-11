@@ -1,0 +1,8 @@
+<aura:component >
+    <aura:attribute name="caseId" type="ID" />
+    
+    <!-- using <lightning:recordForm> component here, it's a part of Lightning Data Service, see the Lightning Data Service demo
+        for details -->
+    <lightning:recordForm recordId="{!v.caseId}" objectApiName="Case" layoutType="Compact"/>
+    
+</aura:component>
