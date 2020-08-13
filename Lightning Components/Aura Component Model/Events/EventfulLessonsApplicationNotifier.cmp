@@ -1,0 +1,17 @@
+<aura:component >
+    <!-- before we can fire an event from a component, we must first register it through use of the 
+        <aura:registerEvent> tag
+    
+    the name parameter is the name of our event, which we'll refer to in our controller
+
+    the type parameter tells the system where the event is located, we give it the value namespace - colon -
+        event file name
+    so here, we're telling the system we're registering the event located in the exAppEvent file, which is in the
+    default c namespace -->
+    <aura:registerEvent name="appEvent" type="c:EventfulLessonsCustomApplicationEvent"/>
+    
+    <!-- here we use a button to fire event
+        note that the button is not a requirement to fire any custom event, it's only our tool for this specific use case -
+        you can fire a custom event without any use of a button -->
+    <p><lightning:button label="Fire App Event" onclick="{!c.fireAppEvent}" /></p>
+</aura:component>
