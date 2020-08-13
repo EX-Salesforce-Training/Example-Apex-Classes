@@ -1,0 +1,7 @@
+<aura:component >
+    <aura:attribute name="contacts" type="Contact[]" />
+	<aura:iteration items="{!v.contacts}" var="con">
+        {!con.FirstName} <br/>
+        {!con.LastName} <br/>
+    </aura:iteration>
+</aura:component>
