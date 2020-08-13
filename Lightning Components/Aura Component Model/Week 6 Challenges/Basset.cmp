@@ -1,0 +1,13 @@
+<aura:component >
+	<lightning:card variant="Narrow" title="Basset Hound" iconName="standard:account" footer="Card Footer">
+        <p class="slds-p-horizontal_small">
+            {!v.ears}<br/>
+        </p>
+        <div class="slds-grid">
+            <div class="slds-col slds-size_1-of-4">
+                <img src="{!$Resource.Basset}" /><br/>
+           		Basset Hounds are inarguably goodboys.
+            </div>
+    	</div>
+    </lightning:card>
+</aura:component>
