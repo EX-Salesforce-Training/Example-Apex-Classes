@@ -1,0 +1,37 @@
+<aura:component >
+    <!-- <aura:attribute> tags to display the information propagated in the component event -->
+	<aura:attribute name="messageFromEvent" type="String"/>
+    <aura:attribute name="eventsFired" type="Integer" default="0"/>
+    
+    <!-- <aura:attribute> tags to display the information propagated in the application event -->
+    <aura:attribute name="messageFromAppEvent" type="String"/>
+    <aura:attribute name="appEventsFired" type="Integer" default="0"/> 
+    
+    <!-- in order to handle an event, we must first listen for it
+    we do this through use of the <aura:handler> tag
+
+    the event parameter in <aura:handler> takes the same value as the type parameter in the <aura:registerEvent> tag
+    
+    the action parameter is where we action bind the function in our controller that will handle the event
+
+    we only need to define the event and action parameters to handle an application event, but we must define the
+    name, event, and action parameters to handle a component event (the value of name parameter in <aura:handler> 
+    must match the value of the name parameter in the <aura:registerEvent> tag) --> 
+    <aura:handler name="customEvent" event="c:EventfulLessonsCustomComponentEvent" action="{!c.handleCustomEvent}"/>
+    <aura:handler event="c:EventfulLessonsCustomApplicationEvent" action="{!c.handleCustomAppEvent}"/>
+    
+    <!-- to handle our component event, a component must be an ancestor of the notifier component, so we instantiate the notifier
+    component here -->
+    <c:EventfulLessonsNotifier/>
+    <div>
+        <!-- we use expression syntax to display the value of an <aura:attribute> using the v value provider 
+        (because this is an <aura:attribute> and we want to reference a value stored here, in the view) -->
+        <p>Component Event Message: {!v.messageFromEvent}</p>
+        <p>Times Fired: {!v.eventsFired}</p>
+    </div>
+    <br/>
+    <div>
+        <P>Application Event Message: {!v.messageFromAppEvent}</P>
+        <p>Times App Event Fired: {!v.appEventsFired}</p>
+	</div>    
+</aura:component>
