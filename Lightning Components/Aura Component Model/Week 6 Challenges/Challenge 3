@@ -1,0 +1,35 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+	<lightning:recordViewForm recordId="{!v.recordId}" 
+                              objectApiName="Contact" >
+    <div class="slds-grid">
+        <div class="slds-col slds-size_1-of-4" />
+        <div class="slds-col slds-size_1-of-4">
+            <lightning:outputField fieldName="FirstName" />
+            <lightning:outputField fieldName="LastName" />
+        </div>
+        <div class="slds-col slds-size_1-of-4">
+            <lightning:outputField fieldName="Phone" />
+            <lightning:outputField fieldName="Email" />
+        </div>
+        <div class="slds-col slds-size_1-of-4"/>
+    </div>
+    </lightning:recordViewForm>
+    <lightning:recordEditForm recordId="{!v.recordId}" 
+                              objectApiName="Contact">
+        <div class="slds-grid">
+            <div class="slds-col slds-size_1-of-4">
+                <lightning:inputField fieldName="FirstName" />
+            </div>
+            <div class="slds-col slds-size_1-of-4">
+                <lightning:inputField fieldName="LastName" />
+            </div>
+            <div class="slds-col slds-size_1-of-4">
+                <lightning:inputField fieldName="Phone" />
+            </div>
+            <div class="slds-col slds-size_1-of-4">
+                <lightning:inputField fieldName="Email" />
+            </div>
+        </div>
+        <lightning:button class="slds-m-top_small" type="submit" label="Save" />
+    </lightning:recordEditForm>
+</aura:component>
