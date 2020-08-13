@@ -1,0 +1,13 @@
+<aura:component >
+    <!-- before we can fire an event from a component, we must first register it through use of the 
+        <aura:registerEvent> tag
+    
+        see our application event notifier for details on the <aura:registerEvent> tag
+    -->
+    <aura:registerEvent name="customEvent" type="c:EventfulLessonsCustomComponentEvent"/>
+    
+    <!-- here we use a button to fire event
+        note that the button is not a requirement to fire any custom event, it's only our tool for this specific use case -
+        you can fire a custom event without any use of a button -->
+    <lightning:button label="Fire Event" onclick="{!c.fireCustomEvent}"/>
+</aura:component>
