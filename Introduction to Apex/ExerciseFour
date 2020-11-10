@@ -1,0 +1,33 @@
+public class ExerciseFour {
+	/*
+    // Our first introduction to the static keyword, we'll go over this tomorrow in more detail.
+    // Suffice it to say it makes the declared variable or method belong to the class rather than
+    // the instance.
+    // 
+    // We create a list because it will be a more efficient way to save our records. 
+    // Inserting a list counts as a single dml statement regardless of the number of recors in it.*/
+    public static List<Contact> bobs = new List<Contact>();
+    
+    // Also a static method, meaning it belongs to the class.
+    public static void CreateBobs() {
+        // We know we want 151 contacts, making a traditional for loop a good choice.
+        for(integer i = 0; i < 151; i++) {
+            // For every iteration we create a new contact.
+            Contact bob = new Contact();
+            bob.FirstName = 'Bob';
+            // We use the iterator of i to make the last names unique.
+            bob.LastName = 'test' + i;
+            // We add the new contact to the list.
+            bobs.add(bob);
+        }
+        // outside of the loop we insert the records, counting as a single DML statement.
+        insert bobs;
+    }
+    
+    // Now let us get rid of those pesky bobs using a soql query.
+    public static void DeleteBobs() {
+        List<Contact> bobBye = [SELECT id FROM Contact WHERE FirstName = 'Bob' AND LastName LIKE 'test%'];
+        delete bobBye;
+       
+    }
+}
